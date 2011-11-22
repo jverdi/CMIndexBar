@@ -175,7 +175,7 @@
 		}
 	}
 	
-	[delegate indexSelectionDidChange:self:count:title];
+	[delegate indexSelectionDidChangeForIndexBar:self index:count title:title];
 }
 
 
@@ -211,7 +211,7 @@
 		}
 	}
 	
-	[delegate indexSelectionDidChange:self:count:title];
+	[delegate indexSelectionDidChangeForIndexBar:self index:count title:title];
 }
 
 @end

@@ -30,5 +30,5 @@
 
 @protocol CMIndexBarDelegate<NSObject>
 @optional
-- (void)indexSelectionDidChange:(CMIndexBar *)IndexBar:(int)index:(NSString*)title;
+- (void)indexSelectionDidChangeForIndexBar:(CMIndexBar *)IndexBar index:(int)index title:(NSString*)title;
 @end

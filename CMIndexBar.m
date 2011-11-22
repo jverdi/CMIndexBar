@@ -109,7 +109,7 @@
 		UILabel *alphaLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, ypos, self.frame.size.width, 24.0)];
 		alphaLabel.textAlignment = UITextAlignmentCenter;
 		alphaLabel.text = [indexes objectAtIndex:i];
-		alphaLabel.font = [UIFont fontWithName:@"Helvetica" size:13.0];	
+		alphaLabel.font = [UIFont boldSystemFontOfSize:11.0];	
 		alphaLabel.backgroundColor = [UIColor clearColor];
 		alphaLabel.textColor = textColor;
 		[self addSubview:alphaLabel];	

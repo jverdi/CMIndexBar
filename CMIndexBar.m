@@ -12,6 +12,8 @@
 @synthesize highlightedBackgroundColor;
 @synthesize textColor;
 
+static const CGFloat kAlphaLabelHeight = 16.0f;
+
 - (id)init {
     self = [super init];
 	if (self) {
@@ -62,18 +64,19 @@
 			}
 			else if(i == subcount-1)
 			{
-				ypos = self.frame.size.height-24.0;
+				ypos = self.frame.size.height-kAlphaLabelHeight;
 			}
 			else
 			{
-				float sectionheight = ((self.frame.size.height-24.0)/subcount);
+				float sectionheight = ((self.frame.size.height-kAlphaLabelHeight)/subcount);
 				
 				sectionheight = sectionheight+(sectionheight/subcount);
 				
 				ypos = (sectionheight*i);
 			}
 			
-			[subview setFrame:CGRectMake(0, ypos, self.frame.size.width, 24.0)];
+			[subview setFrame:CGRectMake(0, ypos, self.frame.size.width, kAlphaLabelHeight)];
+            [subview setBackgroundColor:self.backgroundColor];
 			
 			i++;
 		}
@@ -96,17 +99,17 @@
 		}
 		else if(i == [indexes count]-1)
 		{
-			ypos = self.frame.size.height-24.0;
+			ypos = self.frame.size.height-kAlphaLabelHeight;
 		}
 		else
 		{
-			float sectionheight = ((self.frame.size.height-24.0)/[indexes count]);			
+			float sectionheight = ((self.frame.size.height-kAlphaLabelHeight)/[indexes count]);			
 			sectionheight = sectionheight+(sectionheight/[indexes count]);
 			
 			ypos = (sectionheight*i);
 		}
 		
-		UILabel *alphaLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, ypos, self.frame.size.width, 24.0)];
+		UILabel *alphaLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, ypos, self.frame.size.width, kAlphaLabelHeight)];
 		alphaLabel.textAlignment = UITextAlignmentCenter;
 		alphaLabel.text = [indexes objectAtIndex:i];
 		alphaLabel.font = [UIFont boldSystemFontOfSize:11.0];	

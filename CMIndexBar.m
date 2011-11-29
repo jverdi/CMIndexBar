@@ -12,7 +12,7 @@
 @synthesize highlightedBackgroundColor;
 @synthesize textColor;
 
-static const CGFloat kAlphaLabelHeight = 16.0f;
+static const CGFloat kAlphaLabelHeight = 14.0f;
 
 - (id)init {
     self = [super init];
@@ -60,19 +60,19 @@ static const CGFloat kAlphaLabelHeight = 16.0f;
 			
 			if(i == 0)
 			{
-				ypos = 0;
+				ypos = kAlphaLabelHeight / 2;
 			}
 			else if(i == subcount-1)
 			{
-				ypos = self.frame.size.height-kAlphaLabelHeight;
+				ypos = self.frame.size.height - kAlphaLabelHeight - kAlphaLabelHeight/2;
 			}
 			else
 			{
-				float sectionheight = ((self.frame.size.height-kAlphaLabelHeight)/subcount);
+				float sectionheight = ((self.frame.size.height-2*kAlphaLabelHeight)/subcount);
 				
 				sectionheight = sectionheight+(sectionheight/subcount);
 				
-				ypos = (sectionheight*i);
+				ypos = (kAlphaLabelHeight / 2) + (sectionheight*i);
 			}
 			
 			[subview setFrame:CGRectMake(0, ypos, self.frame.size.width, kAlphaLabelHeight)];

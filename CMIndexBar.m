@@ -8,9 +8,9 @@
 
 @implementation CMIndexBar
 
-@synthesize delegate;
-@synthesize highlightedBackgroundColor;
-@synthesize textColor;
+@synthesize delegate = _delegate;
+@synthesize highlightedBackgroundColor = _highlightedBackgroundColor;
+@synthesize textColor = _textColor;
 
 static const CGFloat kAlphaLabelHeight = 14.0f;
 
@@ -19,8 +19,8 @@ static const CGFloat kAlphaLabelHeight = 14.0f;
 	if (self) {
 		// Default colors.
 		self.backgroundColor = [UIColor clearColor];
-		self.textColor = [UIColor blackColor];
-		self.highlightedBackgroundColor = [UIColor lightGrayColor];
+		_textColor = [UIColor blackColor];
+		_highlightedBackgroundColor = [UIColor lightGrayColor];
 	}
 	return self;
 }
@@ -31,10 +31,16 @@ static const CGFloat kAlphaLabelHeight = 14.0f;
     {
         // Default colors.
         self.backgroundColor = [UIColor clearColor];
-        self.textColor = [UIColor blackColor];
-		self.highlightedBackgroundColor = [UIColor lightGrayColor];
+        _textColor = [UIColor blackColor];
+		_highlightedBackgroundColor = [UIColor lightGrayColor];
     }
     return self;
+}
+
+- (void)dealloc {
+    [_highlightedBackgroundColor release];
+    [_textColor release];
+    [super dealloc];
 }
 
 - (void)layoutSubviews 
@@ -114,7 +120,7 @@ static const CGFloat kAlphaLabelHeight = 14.0f;
 		alphaLabel.text = [indexes objectAtIndex:i];
 		alphaLabel.font = [UIFont boldSystemFontOfSize:11.0];	
 		alphaLabel.backgroundColor = [UIColor clearColor];
-		alphaLabel.textColor = textColor;
+		alphaLabel.textColor = _textColor;
 		[self addSubview:alphaLabel];	
 		[alphaLabel release];		
 	}
@@ -142,7 +148,7 @@ static const CGFloat kAlphaLabelHeight = 14.0f;
 	[super touchesBegan:touches withEvent:event];
 	
 	UIView *backgroundview = [[UIView alloc] initWithFrame:CGRectMake(0,0, self.bounds.size.width, self.bounds.size.height)];
-	[backgroundview setBackgroundColor:highlightedBackgroundColor];
+	[backgroundview setBackgroundColor:_highlightedBackgroundColor];
 	backgroundview.layer.cornerRadius = self.bounds.size.width/2;
 	backgroundview.layer.masksToBounds = YES;
 	backgroundview.tag = 767;
@@ -178,7 +184,7 @@ static const CGFloat kAlphaLabelHeight = 14.0f;
 		}
 	}
 	
-	[delegate indexSelectionDidChangeForIndexBar:self index:count title:title];
+	[_delegate indexSelectionDidChangeForIndexBar:self index:count title:title];
 }
 
 
@@ -214,7 +220,7 @@ static const CGFloat kAlphaLabelHeight = 14.0f;
 		}
 	}
 	
-	[delegate indexSelectionDidChangeForIndexBar:self index:count title:title];
+	[_delegate indexSelectionDidChangeForIndexBar:self index:count title:title];
 }
 
 @end

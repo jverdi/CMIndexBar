@@ -11,20 +11,20 @@
 @protocol CMIndexBarDelegate;
 
 @interface CMIndexBar : UIView {
-	NSObject<CMIndexBarDelegate> *delegate;
+	NSObject<CMIndexBarDelegate> *_delegate;
 	
-	UIColor *highlightedBackgroundColor;
-	UIColor *textColor;
+	UIColor *_highlightedBackgroundColor;
+	UIColor *_textColor;
 }
+
+@property (nonatomic, assign) NSObject<CMIndexBarDelegate> *delegate;
+@property (nonatomic, retain) UIColor *highlightedBackgroundColor;
+@property (nonatomic, retain) UIColor *textColor;
 
 - (id)init;
 - (id)initWithFrame:(CGRect)frame;
 - (void) setIndexes:(NSArray*)indexes;
 - (void) clearIndex;
-
-@property (nonatomic, assign) NSObject<CMIndexBarDelegate> *delegate;
-@property (nonatomic, retain) UIColor *highlightedBackgroundColor;
-@property (nonatomic, retain) UIColor *textColor;
 
 @end
 

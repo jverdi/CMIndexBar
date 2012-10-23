@@ -14,7 +14,8 @@
 
 static const CGFloat kAlphaLabelHeight = 14.0f;
 
-- (id)init {
+- (id)init
+{
     self = [super init];
 	if (self) {
 		// Default colors.
@@ -37,7 +38,8 @@ static const CGFloat kAlphaLabelHeight = 14.0f;
     return self;
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
     [_highlightedBackgroundColor release];
     [_textColor release];
     [super dealloc];
@@ -136,17 +138,18 @@ static const CGFloat kAlphaLabelHeight = 14.0f;
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	[super touchesEnded:touches withEvent:event];
-  [self touchesEndedOrCancelled:touches withEvent:event];
+    [super touchesEnded:touches withEvent:event];
+    [self touchesEndedOrCancelled:touches withEvent:event];
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
-  [super touchesCancelled:touches withEvent:event];
-  [self touchesEndedOrCancelled:touches withEvent:event];
+    [super touchesCancelled:touches withEvent:event];
+    [self touchesEndedOrCancelled:touches withEvent:event];
 }
 
-- (void) touchesEndedOrCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void) touchesEndedOrCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
  	UIView *backgroundView = (UIView*)[self viewWithTag:767];
 	[backgroundView removeFromSuperview]; 
 }
@@ -194,7 +197,6 @@ static const CGFloat kAlphaLabelHeight = 14.0f;
 	
 	[_delegate indexSelectionDidChangeForIndexBar:self index:count title:title];
 }
-
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
